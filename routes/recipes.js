@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
     console.log("posting recipes");
     var collection = db.get('recipes');
-    collection.create({
+    collection.insert({
         title : req.body.title,
         img : req.body.img,
         done : false
