@@ -9,6 +9,7 @@ var monk = require('monk');
 var db = monk('viciousdelicious:cake50@ds155080.mlab.com:55080/heroku_xdjx3gtb');
 
 router.get('/', function(req, res) {
+    console.log("fetching recipes");
     var collection = db.get('recipes');
     collection.find({}, function(err, recipes){
         if (err) throw err;
@@ -16,8 +17,10 @@ router.get('/', function(req, res) {
     });
 });
 
-router.post('/', function(req, res) {
 
+
+router.post('/', function(req, res) {
+    console.log("posting recipes");
     var collection = db.get('recipes');
     collection.create({
         title : req.body.title,
@@ -36,5 +39,16 @@ router.post('/', function(req, res) {
     });
 
 });
+
+router.delete('/:recipe_id', function(req, res) {
+
+    var collection = db.get('recipes');
+    collection.remove({
+        _id : req.params.recipe_id
+    }, function(err, recipe) {
+
+    });
+});
+
 
 module.exports = router;
