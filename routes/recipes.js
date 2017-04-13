@@ -25,19 +25,15 @@ router.post('/', function(req, res) {
     collection.insert({
         title : req.body.title,
         img : req.body.img,
-        done : false
+        subtitle1:req.body.subtitle1,
+        subtitle2:req.body.subtitle2,
+        ingredients:req.body.ingredients,
+        slides:req.body.slides
+        //done : false
     }, function(err, recipe) {
         if (err)
             res.send(err);
-
-        // get and return all the reviews after you create another
-        //collection.find(function(err, recipes) {
-        //   if (err)
-        //        res.send(err)
-        //    res.json(recipes);
-        //});
     });
-
 });
 
 router.delete('/:recipe_id', function(req, res) {
