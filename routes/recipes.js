@@ -31,11 +31,11 @@ router.post('/', function(req, res) {
             res.send(err);
 
         // get and return all the reviews after you create another
-        collection.find(function(err, recipes) {
-            if (err)
-                res.send(err)
-            res.json(recipes);
-        });
+        //collection.find(function(err, recipes) {
+        //   if (err)
+        //        res.send(err)
+        //    res.json(recipes);
+        //});
     });
 
 });
