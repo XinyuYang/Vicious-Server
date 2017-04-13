@@ -16,4 +16,25 @@ router.get('/', function(req, res) {
     });
 });
 
+router.post('/', function(req, res) {
+
+    var collection = db.get('recipes');
+    collection.create({
+        title : req.body.title,
+        img : req.body.img,
+        done : false
+    }, function(err, recipe) {
+        if (err)
+            res.send(err);
+
+        // get and return all the reviews after you create another
+        collection.find(function(err, recipes) {
+            if (err)
+                res.send(err)
+            res.json(recipes);
+        });
+    });
+
+});
+
 module.exports = router;
