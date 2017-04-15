@@ -17,15 +17,13 @@ router.get('/', function(req, res) {
     });
 });
 
-
-router.get('/beverage', function (req, res) {
-    console.log("fetching categorical data");
+router.get('/beverage', function(req, res) {
+    console.log("fetching recipes");
     var collection = db.get('recipes');
-    collection.find({}, function (err, recipes) {
+    collection.find({}, function(err, recipes){
         if (err) throw err;
         res.json(recipes);
-    })
-
+    });
 });
 
 
