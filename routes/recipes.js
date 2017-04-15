@@ -26,10 +26,10 @@ router.get('/beverage', function(req, res) {
     });
 });
 
-router.get('/:category', function(req, res){
+router.get('/food', function(req, res){
     console.log("fetching food recipes");
-    var collection = db.get('food');
-    collection.find({category: req.params.category}, function(err, recipes){
+    var collection = db.get('recipes');
+    collection.find({category: "Food"}, function(err, recipes){
         if (err) throw err;
         res.json(recipes);
     })
