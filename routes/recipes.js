@@ -18,13 +18,22 @@ router.get('/', function(req, res) {
 });
 
 router.get('/beverage', function(req, res) {
-    console.log("fetching recipes");
+    console.log("fetching beverage recipes");
     var collection = db.get('recipes');
-    collection.find({category:"Beverage"}, function(err, recipes){
+    collection.find({category: "Beverage"}, function(err, recipes){
         if (err) throw err;
         res.json(recipes);
     });
 });
+
+router.get('/:category', function(req, res){
+    console.log("fetching food recipes");
+    var collection = db.get('food');
+    collection.find({category: req.params.category}, function(err, recipes){
+        if (err) throw err;
+        res.json(recipes);
+    })
+})
 
 
 router.post('/', function(req, res) {
