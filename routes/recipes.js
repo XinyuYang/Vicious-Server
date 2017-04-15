@@ -18,6 +18,16 @@ router.get('/', function(req, res) {
 });
 
 
+router.get('/beverage', function (req, res) {
+    console.log("fetching categorical data");
+    var collection = db.get('recipes');
+    collection.find({}, function (err, recipes) {
+        if (err) throw err;
+        res.json(recipes);
+    })
+
+});
+
 
 router.post('/', function(req, res) {
     console.log("posting recipes");
