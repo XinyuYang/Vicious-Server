@@ -35,14 +35,7 @@ router.get('/food', function(req, res){
     })
 })
 
-router.get('/search/:keyword', function(req, res){
-    console.log("fetching food recipes");
-    var collection = db.get('recipes');
-    collection.find({title: req.params.search}, function(err, recipes){
-        if (err) throw err;
-        res.json(recipes);
-    })
-})
+
 
 router.post('/', function(req, res) {
     console.log("posting recipes");
