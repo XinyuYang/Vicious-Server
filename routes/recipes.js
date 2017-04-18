@@ -4,7 +4,8 @@
 
 var express = require('express');
 var router = express.Router();
-var sanitize = require('mongo-sanitize');
+
+//var sanitize = require('mongo-sanitize');
 
 var monk = require('monk');
 var db = monk('viciousdelicious:cake50@ds155080.mlab.com:55080/heroku_xdjx3gtb');
@@ -42,12 +43,12 @@ router.post('/', function(req, res) {
     console.log("posting recipes");
     var collection = db.get('recipes');
     collection.insert({
-        title : sanitize(req.body.title),
-        img : sanitize(req.body.img),
-        subtitle1:sanitize(req.body.subtitle1),
-        subtitle2:sanitize(req.body.subtitle2),
-        ingredients:sanitize(req.body.ingredients),
-        slides:sanitize(req.body.slides)
+        title : req.body.title,
+        img : req.body.img,
+        subtitle1:req.body.subtitle1,
+        subtitle2:req.body.subtitle2,
+        ingredients:req.body.ingredients,
+        slides:req.body.slides
         //done : false
     }, function(err, recipe) {
         if (err)
