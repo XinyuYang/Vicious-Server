@@ -43,7 +43,7 @@ router.post('/', function(req, res) {
     console.log("posting recipes");
     var collection = db.get('recipes');
     collection.insert({
-        title : req.body.title,
+        title : sanitize(req.body.title),
         img : req.body.img,
         subtitle1:req.body.subtitle1,
         subtitle2:req.body.subtitle2,
