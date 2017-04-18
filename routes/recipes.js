@@ -5,7 +5,7 @@
 var express = require('express');
 var router = express.Router();
 
-//var sanitize = require('mongo-sanitize');
+var sanitize = require('mongo-sanitize');
 
 var monk = require('monk');
 var db = monk('viciousdelicious:cake50@ds155080.mlab.com:55080/heroku_xdjx3gtb');
