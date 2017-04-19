@@ -11,6 +11,7 @@ var db = monk('viciousdelicious:cake50@ds155080.mlab.com:55080/heroku_xdjx3gtb')
 
 /*
 GET all recipes.
+Location where the url 'https://viciousdelicious.herokuapp.com/api/recipes' comes from
  */
 router.get('/', function(req, res) {
     console.log("fetching recipes");
