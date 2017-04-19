@@ -31,9 +31,16 @@ app.use(function(req,res,next){
   next();
 });
 
+
+/*
+Setting up middleware.
+Connects software components or applications.
+*/
 app.use('/', index);
 app.use('/users', users);
 app.use('/api/recipes', recipes);
+app.use('/api/recipes/beverage', recipes);
+app.use('/api/recipes/food',recipes);
 
 
 // catch 404 and forward to error handler
