@@ -1,5 +1,5 @@
 /**
- * Created by Tianyou on 2017/3/30.
+ * Asks for data from the Heroku Server
  */
 
 var express = require('express');
