@@ -9,6 +9,8 @@ var router = express.Router();
 var monk = require('monk');
 var db = monk('viciousdelicious:cake50@ds155080.mlab.com:55080/heroku_xdjx3gtb');
 
+var ViciousToken="AllenJenniferTianyouXinyu"
+
 /*
 GET all recipes.
 Location where the url 'https://viciousdelicious.herokuapp.com/api/recipes' comes from
@@ -44,12 +46,32 @@ router.get('/food', function(req, res){
         if (err) throw err;
         res.json(recipes);//sends a JSON response composed of a stringified version of recipes data.
     })
-})
+});
 
 
 
 router.post('/', function(req, res) {
     console.log("posting recipes");
+
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+    if (token) {
+
+        if (token!=ViciousToken) {
+            return res.json({success: false, message: 'Failed to authenticate token.'});
+        }
+
+    } else {
+
+        // if there is no token
+        // return an error
+        return res.status(403).send({
+            success: false,
+            message: 'No token provided.'
+        });
+
+    }
+
     var collection = db.get('recipes');
     collection.insert({ //adding data to the recipes.
         title : req.body.title,
@@ -63,6 +85,9 @@ router.post('/', function(req, res) {
             res.send(err);
     });
 });
+
+
+
 
 router.delete('/:recipe_id', function(req, res) {
 
