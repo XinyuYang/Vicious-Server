@@ -9,7 +9,7 @@ var router = express.Router();
 var monk = require('monk');
 var db = monk('viciousdelicious:cake50@ds155080.mlab.com:55080/heroku_xdjx3gtb');
 
-var ViciousToken="AllenJenniferTianyouXinyu"
+var ViciousToken="AllenJenniferTianyouXinyu";
 
 /*
 GET all recipes.
@@ -52,25 +52,25 @@ router.get('/food', function(req, res){
 
 router.post('/', function(req, res) {
     console.log("posting recipes");
-    //
-    // var token = req.body.token || req.query.token || req.headers['x-access-token'];
-    //
-    // if (token) {
-    //
-    //     if (token!=ViciousToken) {
-    //         return res.json({success: false, message: 'Failed to authenticate token.'});
-    //     }
-    //
-    // } else {
-    //
-    //     // if there is no token
-    //     // return an error
-    //     return res.status(403).send({
-    //         success: false,
-    //         message: 'No token provided.'
-    //     });
-    //
-    // }
+
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+    if (token) {
+
+        if (token!=ViciousToken) {
+            return res.json({success: false, message: 'Failed to authenticate token.'});
+        }
+
+    } else {
+
+        // if there is no token
+        // return an error
+        return res.status(403).send({
+            success: false,
+            message: 'No token provided.'
+        });
+
+    }
 
     var collection = db.get('recipes');
     collection.insert({ //adding data to the recipes.
