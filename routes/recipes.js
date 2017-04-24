@@ -1,5 +1,5 @@
 /**
- * Asks for data from the Heroku Server 
+ * Asks for data from the Heroku Server
  */
 
 var express = require('express');
