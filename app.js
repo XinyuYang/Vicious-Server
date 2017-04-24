@@ -30,6 +30,11 @@ app.use(function(req,res,next){
   next();
 });
 
+
+/*
+Setting up middleware.
+Connects software components or applications.
+*/
 app.use('/', index);
 app.use('/users', users);
 app.use('/api/recipes', recipes);
