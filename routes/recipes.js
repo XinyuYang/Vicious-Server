@@ -52,7 +52,7 @@ router.get('/food', function(req, res){
 
 router.post('/', function(req, res) {
     console.log("posting recipes");
-
+    //
     // var token = req.body.token || req.query.token || req.headers['x-access-token'];
     //
     // if (token) {
