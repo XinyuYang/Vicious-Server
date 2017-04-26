@@ -27,10 +27,10 @@ router.get('/', function(req, res) {
 /*
 GET beverage recipes.
  */
-router.get('/beverage', function(req, res) {
-    console.log("fetching beverage recipes");
+router.get('/vegetarian', function(req, res) {
+    console.log("fetching vegetarian recipes");
     var collection = db.get('recipes');
-    collection.find({category: "Beverage"}, function(err, recipes){ //find those whose category is Beverage in collection
+    collection.find({category: "Vegetarian"}, function(err, recipes){ //find those whose category is Beverage in collection
         if (err) throw err;
         res.json(recipes); //sends a JSON response composed of a stringified version of recipes data.
     });
@@ -39,10 +39,10 @@ router.get('/beverage', function(req, res) {
 /*
 GET food recipes.
  */
-router.get('/food', function(req, res){
-    console.log("fetching food recipes");
+router.get('/nonvegetarian', function(req, res){
+    console.log("fetching nonvegetarian recipes");
     var collection = db.get('recipes');
-    collection.find({category: "Food"}, function(err, recipes){ //find those whose category is Food in collection
+    collection.find({category: "Nonvegetarian"}, function(err, recipes){ //find those whose category is Food in collection
         if (err) throw err;
         res.json(recipes);//sends a JSON response composed of a stringified version of recipes data.
     })
