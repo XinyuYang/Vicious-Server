@@ -76,6 +76,7 @@ router.post('/', function(req, res) {
     collection.insert({ //adding data to the recipes.
         title : req.body.title,
         img : req.body.img,
+        category: req.body.category,
         subtitle1:req.body.subtitle1,
         subtitle2:req.body.subtitle2,
         ingredients:req.body.ingredients,
