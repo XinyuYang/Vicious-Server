@@ -39,7 +39,9 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/api/recipes', recipes);
 app.use('/api/recipes/vegetarian', recipes);
-app.use('/api/recipes/nonvegetarian',recipes);
+//app.use('/api/recipes/nonvegetarian',recipes); // Disabled - same as all
+app.use('/api/recipes/food', recipes);
+app.use('/api/recipes/beverage', recipes);
 
 
 // catch 404 and forward to error handler
